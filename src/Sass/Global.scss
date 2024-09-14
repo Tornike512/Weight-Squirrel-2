@@ -1,0 +1,14 @@
+@import "./Breakpoints.scss";
+@import "./Colors.scss";
+@import "./Variables.scss";
+@import "./Mixins.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #d5d5d5;
+}
