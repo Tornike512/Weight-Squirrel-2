@@ -13,9 +13,21 @@ body {
   background-color: #ececec;
 }
 
-.card-page-wrapper {
+.app {
   height: 100vh;
+  padding: 50px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .card-page-wrapper {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    column-gap: 30px;
+  }
 }
