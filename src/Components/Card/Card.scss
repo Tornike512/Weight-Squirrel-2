@@ -2,3 +2,16 @@
 @import "/src/Sass/Colors.scss";
 @import "/src/Sass/Mixins.scss";
 @import "/src/Sass/Variables.scss";
+
+.card {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: $primary-card-color;
+  border-radius: $primary-border-radius;
+  box-shadow: $primary-shadow-color;
+  cursor: pointer;
+}
