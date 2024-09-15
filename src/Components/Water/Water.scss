@@ -1,0 +1,45 @@
+@import "/src/Sass/BreakPoints.scss";
+@import "/src/Sass/Colors.scss";
+@import "/src/Sass/Mixins.scss";
+@import "/src/Sass/Variables.scss";
+
+.center {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 208px;
+  left: 438px;
+}
+.circle {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  background-color: #ffffff;
+  border: 2px solid #fff;
+  overflow: hidden;
+  border-radius: 10px;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  cursor: pointer;
+}
+.wave {
+  background-color: #3f68c5;
+  position: absolute;
+  top: 31%;
+  height: 700%;
+  width: 350%;
+  border-radius: 45%;
+  left: -141%;
+  animation: wave 37s linear infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(3600deg);
+  }
+}
