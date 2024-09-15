@@ -3,7 +3,35 @@
 @import "/src/Sass/Mixins.scss";
 @import "/src/Sass/Variables.scss";
 
-.card {
+// .card {
+//   max-width: 400px;
+//   width: 100%;
+//   height: 200px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 10px;
+//   background-color: $primary-card-color;
+//   border-radius: $primary-border-radius;
+//   font-size: $font-size-20px;
+//   box-shadow: $primary-shadow-color;
+//   cursor: pointer;
+
+//   &:hover {
+//     transition: 0.2s box-shadow;
+//     box-shadow: 0px 0px 23px rgb(255 255 255);
+//   }
+// }
+
+/* Back Pulse */
+@keyframes back-pulse {
+  50% {
+    background-color: rgba(32, 152, 209, 0.75);
+  }
+}
+
+.back-pulse {
+  /* Add necessary hacks here */
   max-width: 400px;
   width: 100%;
   height: 200px;
@@ -16,9 +44,19 @@
   font-size: $font-size-20px;
   box-shadow: $primary-shadow-color;
   cursor: pointer;
+  overflow: hidden;
+  transition-duration: 0.5s; /* Assuming $slowDuration is 0.5s */
+  transition-property: color, background-color;
 
-  &:hover {
-    transition: 0.2s box-shadow;
-    box-shadow: 0px 0px 23px rgb(255 255 255);
+  &:hover,
+  &:focus,
+  &:active {
+    animation-name: back-pulse;
+    animation-duration: 1s;
+    animation-delay: 0.5s; /* Assuming $slowDuration is 0.5s */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    background-color: rgba(32, 152, 209, 1);
+    color: white;
   }
 }
