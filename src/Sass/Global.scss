@@ -15,14 +15,14 @@ body {
 
 .app {
   height: 100vh;
-  padding: 50px;
+  padding: 50px 50px 100px 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 
   h1 {
-    margin-bottom: 20px;
+    margin-bottom: 26px;
   }
 
   .card-page-wrapper {
