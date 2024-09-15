@@ -190,9 +190,18 @@
   flex-direction: column;
 
   h1 {
+    position: relative;
     margin-bottom: 26px;
     color: #ffffff;
     text-shadow: #000000 0px 0 5px;
+
+    .votes {
+      position: absolute;
+      top: -30px;
+      left: -265px;
+      font-size: $font-size-24px;
+      color: #ffffff;
+    }
   }
 
   .card-page-wrapper {
