@@ -1,10 +1,16 @@
 import "./Card.scss";
 
-export function Card({ question }: { question: string }) {
+export function Card({
+  question,
+  onClick,
+}: {
+  question: string;
+  onClick: () => void;
+}) {
   return (
-    <div className="back-pulse">
+    <button onClick={onClick} className="back-pulse">
       <p className="card-text">{question}</p>
-    </div>
+    </button>
   );
 }
 
