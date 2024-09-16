@@ -28,6 +28,12 @@
   font-size: $font-size-20px;
   font-weight: bold;
   color: #ffffff;
+
+  .percentage {
+    position: absolute;
+    top: 10px;
+    left: 16px;
+  }
 }
 
 .circles {
