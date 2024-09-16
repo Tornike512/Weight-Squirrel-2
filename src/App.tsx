@@ -63,9 +63,9 @@ function App() {
         </h1>
         <div className="card-page-wrapper">
           {/* <Card question="აკონტროლო ორი ციყვი" /> */}
-          <Water />
+          <Water question="აკონტროლო ორი ციყვი" />
           {/* <Card question="გაიგო ყველაფრის მასა რასაც შეხედავ" /> */}
-          <Water />
+          <Water question="გაიგო ყველაფრის მასა რასაც შეხედავ" />
         </div>
       </div>
     </>
