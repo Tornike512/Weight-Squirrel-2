@@ -2,11 +2,22 @@ import "./Water.scss";
 
 export function Water() {
   return (
-    <div className="center">
-      <div className="circle">
-        <div className="wave"></div>
+    <>
+      <div className="area">
+        <ul className="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
-    </div>
+    </>
   );
 }
 
