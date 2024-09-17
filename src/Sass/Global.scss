@@ -194,6 +194,7 @@
     margin-bottom: 26px;
     color: #ffffff;
     text-shadow: #000000 0px 0 5px;
+    white-space: nowrap;
 
     .votes {
       position: absolute;
@@ -201,6 +202,11 @@
       left: -265px;
       font-size: $font-size-24px;
       color: #ffffff;
+
+      @include md {
+        left: 40px;
+        top: -40px;
+      }
     }
   }
 
@@ -208,6 +214,11 @@
     display: grid;
     grid-template-columns: 400px 400px;
     column-gap: 30px;
+
+    @include lg {
+      grid-template-columns: 400px;
+      row-gap: 30px;
+    }
   }
 }
 
