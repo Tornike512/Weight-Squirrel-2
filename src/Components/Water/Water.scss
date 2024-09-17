@@ -37,7 +37,12 @@
 }
 
 .circles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
+  text-align: center;
+  padding: 10px;
   top: 0;
   left: 0;
   width: 100%;

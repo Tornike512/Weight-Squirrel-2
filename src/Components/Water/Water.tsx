@@ -4,9 +4,9 @@ export function Water({ question }: { question: string }) {
   return (
     <>
       <div className="area">
-        {question}
         <p className="percentage">5%</p>
         <ul className="circles">
+          <p className="question"> {question}</p>
           <li></li>
           <li></li>
           <li></li>
