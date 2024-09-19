@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Water } from "../Water";
 import Card from "../Card/Card";
 
@@ -12,8 +12,8 @@ export function CardWaterWrapper() {
   return (
     <div className="app">
       <h1>
+        <div className="votes">ხმების რაოდენობა:5</div>
         რომელი გირჩევნია?
-        <p className="votes">ხმების რაოდენობა:5</p>
       </h1>
       <div className="card-page-wrapper">
         {!showWater && (

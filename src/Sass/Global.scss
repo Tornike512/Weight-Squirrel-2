@@ -189,6 +189,12 @@
   justify-content: center;
   flex-direction: column;
 
+  @include lg {
+    padding: 0 50px 50px 50px;
+    justify-content: flex-start;
+    margin-top: 80px;
+  }
+
   h1 {
     position: relative;
     margin-bottom: 26px;
@@ -204,8 +210,11 @@
       color: #ffffff;
 
       @include md {
-        left: 40px;
-        top: -40px;
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
       }
     }
   }
