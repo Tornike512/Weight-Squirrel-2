@@ -7,16 +7,6 @@ export function Water({ question }: { question: string }) {
         <p className="percentage">5%</p>
         <ul className="circles">
           <p className="question"> {question}</p>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
     </>

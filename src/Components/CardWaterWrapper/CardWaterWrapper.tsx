@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Water } from "../Water";
 import Card from "../Card/Card";
 
