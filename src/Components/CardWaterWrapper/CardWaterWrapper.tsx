@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Water } from "../Water";
 import { io } from "socket.io-client";
 import Card from "../Card/Card";
+import useGetIpAddress from "../../Hooks/useGetIpAddress";
 
 export function CardWaterWrapper() {
   const [showWater, setShowWater] = useState<boolean>(false);
@@ -19,6 +20,8 @@ export function CardWaterWrapper() {
     setShowWater(true);
     socket.emit("updateVote");
   };
+
+  console.log(useGetIpAddress());
 
   return (
     <div className="app">
