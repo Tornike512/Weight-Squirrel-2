@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { Water } from "../Water";
 import { io } from "socket.io-client";
-import Card from "../Card/Card";
+import { removeDuplicates } from "../../utils/removeDuplicates";
 import useGetIpAddress from "../../Hooks/useGetIpAddress";
+import Card from "../Card/Card";
 
 export function CardWaterWrapper() {
   const [showWater, setShowWater] = useState<boolean>(false);
   const [voteCount, setVoteCount] = useState<number>(0);
+
+  const { ip } = useGetIpAddress();
 
   const socket = io("http://localhost:4500");
 
@@ -21,7 +24,7 @@ export function CardWaterWrapper() {
     socket.emit("updateVote");
   };
 
-  console.log(useGetIpAddress());
+  console.log(removeDuplicates(ip));
 
   return (
     <div className="app">

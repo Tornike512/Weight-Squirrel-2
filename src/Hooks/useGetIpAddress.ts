@@ -2,8 +2,12 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
+interface TIp {
+  ipAddress: string[];
+}
+
 export default function useGetIpAddress() {
-  const [ip, setIp] = useState();
+  const [ip, setIp] = useState<TIp[]>([]);
 
   async function getIp() {
     try {
