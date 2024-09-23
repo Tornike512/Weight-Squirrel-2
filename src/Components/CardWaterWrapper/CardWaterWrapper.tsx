@@ -3,11 +3,15 @@ import { Water } from "../Water";
 import { io } from "socket.io-client";
 import { removeDuplicates } from "../../utils/removeDuplicates";
 import useGetIpAddress from "../../Hooks/useGetIpAddress";
+import { useIpAddress } from "../../Hooks/useIpAddress";
+
 import Card from "../Card/Card";
 
 export function CardWaterWrapper() {
   const [showWater, setShowWater] = useState<boolean>(false);
   const [voteCount, setVoteCount] = useState<number>(0);
+
+  useIpAddress();
 
   const { ip } = useGetIpAddress();
 
@@ -17,14 +21,20 @@ export function CardWaterWrapper() {
     socket.on("sendVote", (currentVote) => {
       setVoteCount(currentVote);
     });
-  }, []);
+  }, [ip]);
+
+  // useEffect(() => {
+  //   if()
+  // }, []);
 
   const handleCardClick = () => {
-    setShowWater(true);
-    socket.emit("updateVote");
+    if (removeDuplicates(ip).includes(ip[ip.length - 1].ipAddress.toString())) {
+      setShowWater(true);
+      socket.emit("updateVote");
+    }
   };
 
-  console.log(removeDuplicates(ip));
+  console.log(removeDuplicates(ip)[removeDuplicates(ip).length - 1]);
 
   return (
     <div className="app">

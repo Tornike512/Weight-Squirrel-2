@@ -1,5 +1,5 @@
 export const removeDuplicates = (ips: any) => {
-  const mappedIp = ips.map((address: any) => {
+  const mappedIp = ips.map((address: any, ipAddress: any) => {
     return address.ipAddress;
   });
 
