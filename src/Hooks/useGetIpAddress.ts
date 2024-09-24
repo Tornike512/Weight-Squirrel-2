@@ -8,11 +8,13 @@ interface TIp {
 
 export default function useGetIpAddress() {
   const [ip, setIp] = useState<TIp[]>([]);
+  const [apiLoaded, setApiLoaded] = useState<boolean>(false);
 
   async function getIp() {
     try {
       const response = await axios.get("http://localhost:4500/api/get");
       setIp(response.data);
+      setApiLoaded(true);
     } catch (error) {
       console.log("Error Loading Ip Addressed", error);
     }
@@ -22,5 +24,5 @@ export default function useGetIpAddress() {
     getIp();
   }, []);
 
-  return { ip };
+  return { ip, apiLoaded };
 }
