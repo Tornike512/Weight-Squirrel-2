@@ -10,10 +10,6 @@ export function CardWaterWrapper() {
   const [showWater, setShowWater] = useState<boolean>(false);
   const [voteCount, setVoteCount] = useState<number>(0);
 
-  useEffect(() => {
-    useIpAddress();
-  }, []);
-
   const { ip, apiLoaded } = useGetIpAddress();
 
   const socket = io("http://localhost:4500");
@@ -35,6 +31,7 @@ export function CardWaterWrapper() {
   const handleCardClick = () => {
     setShowWater(true);
     socket.emit("updateVote");
+    useIpAddress();
   };
 
   return (
