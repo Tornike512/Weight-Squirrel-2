@@ -228,6 +228,10 @@
       grid-template-columns: 400px;
       row-gap: 30px;
     }
+
+    @include sm {
+      grid-template-columns: 350px;
+    }
   }
 }
 
