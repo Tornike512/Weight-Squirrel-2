@@ -38,7 +38,7 @@ export function CardWaterWrapper() {
     <div className="app">
       <h1>
         <div className="votes">ხმების რაოდენობა:{`${voteCount}`}</div>
-        რომელი გირჩევნია?
+        {showWater ? "შენ უკვე მიეცი ხმა" : "რომელი გირჩევნია?"}
       </h1>
       <div className="card-page-wrapper">
         {!showWater && (
