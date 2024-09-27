@@ -28,8 +28,16 @@ export function CardWaterWrapper() {
     });
   }, [ip]);
 
-  const handleCardClick = () => {
+  const handleRedCardClick = () => {
     setShowWater(true);
+    socket.emit("sendRed");
+    socket.emit("updateVote");
+    useIpAddress();
+  };
+
+  const handleGreenCardClick = () => {
+    setShowWater(true);
+    socket.emit("sendGreen");
     socket.emit("updateVote");
     useIpAddress();
   };
@@ -42,12 +50,12 @@ export function CardWaterWrapper() {
       </h1>
       <div className="card-page-wrapper">
         {!showWater && (
-          <Card onClick={handleCardClick} question="აკონტროლო ორი ციყვი" />
+          <Card onClick={handleRedCardClick} question="აკონტროლო ორი ციყვი" />
         )}
         {showWater && <Water question="აკონტროლო ორი ციყვი" />}
         {!showWater && (
           <Card
-            onClick={handleCardClick}
+            onClick={handleGreenCardClick}
             question="გაიგო ყველაფრის მასა რასაც შეხედავ"
           />
         )}
