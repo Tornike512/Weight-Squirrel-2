@@ -9,6 +9,8 @@ import Card from "../Card/Card";
 export function CardWaterWrapper() {
   const [showWater, setShowWater] = useState<boolean>(false);
   const [voteCount, setVoteCount] = useState<number>(0);
+  const [redCount, setRedCount] = useState<number>(0);
+  const [greenCount, setGreenCount] = useState<number>(0);
 
   const { ip, apiLoaded } = useGetIpAddress();
 
@@ -28,19 +30,33 @@ export function CardWaterWrapper() {
     });
   }, [ip]);
 
+  useEffect(() => {
+    socket.on("sendRed", (reds) => {
+      setRedCount(reds);
+    });
+    socket.on("sendGreen", (greens) => {
+      setGreenCount(greens);
+    });
+  }, []);
+
   const handleRedCardClick = () => {
     setShowWater(true);
-    socket.emit("sendRed");
+    socket.emit("updateRed");
     socket.emit("updateVote");
     useIpAddress();
   };
 
   const handleGreenCardClick = () => {
     setShowWater(true);
-    socket.emit("sendGreen");
+    socket.emit("updateGreen");
     socket.emit("updateVote");
     useIpAddress();
   };
+
+  console.log(redCount, greenCount);
+
+  const redPercent = (redCount * 100) / (redCount + greenCount);
+  const greenPercent = (greenCount * 100) / (redCount + greenCount);
 
   return (
     <div className="app">
@@ -52,14 +68,21 @@ export function CardWaterWrapper() {
         {!showWater && (
           <Card onClick={handleRedCardClick} question="აკონტროლო ორი ციყვი" />
         )}
-        {showWater && <Water question="აკონტროლო ორი ციყვი" />}
+        {showWater && (
+          <Water percentage={redPercent} question="აკონტროლო ორი ციყვი" />
+        )}
         {!showWater && (
           <Card
             onClick={handleGreenCardClick}
             question="გაიგო ყველაფრის მასა რასაც შეხედავ"
           />
         )}
-        {showWater && <Water question="გაიგო ყველაფრის მასა რასაც შეხედავ" />}
+        {showWater && (
+          <Water
+            percentage={greenPercent}
+            question="გაიგო ყველაფრის მასა რასაც შეხედავ"
+          />
+        )}
       </div>
     </div>
   );

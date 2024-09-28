@@ -1,10 +1,16 @@
 import "./Water.scss";
 
-export function Water({ question }: { question: string }) {
+export function Water({
+  question,
+  percentage,
+}: {
+  question: string;
+  percentage: number;
+}) {
   return (
     <>
       <div className="area">
-        <p className="percentage">5%</p>
+        <p className="percentage">{percentage.toFixed()}%</p>
         <ul className="circles">
           <p className="question"> {question}</p>
         </ul>
