@@ -5,12 +5,14 @@ import { removeDuplicates } from "../../utils/removeDuplicates";
 import useGetIpAddress from "../../Hooks/useGetIpAddress";
 import { useIpAddress } from "../../Hooks/useIpAddress";
 import Card from "../Card/Card";
+import { Loader } from "../Loader";
 
 export function CardWaterWrapper() {
   const [showWater, setShowWater] = useState<boolean>(false);
   const [voteCount, setVoteCount] = useState<number>(0);
   const [redCount, setRedCount] = useState<number>(0);
   const [greenCount, setGreenCount] = useState<number>(0);
+  const [loader, setLoader] = useState<boolean>(false);
 
   const { ip, apiLoaded } = useGetIpAddress();
 
@@ -25,10 +27,14 @@ export function CardWaterWrapper() {
   }, [showWater, newUser]);
 
   useEffect(() => {
+    setLoader(true);
     socket.on("sendVote", (currentVote) => {
       setVoteCount(currentVote);
+      setLoader(false);
     });
   }, [ip]);
+
+  console.log(loader);
 
   useEffect(() => {
     socket.on("sendRed", (reds) => {
@@ -53,15 +59,15 @@ export function CardWaterWrapper() {
     useIpAddress();
   };
 
-  console.log(redCount, greenCount);
-
   const redPercent = (redCount * 100) / (redCount + greenCount);
   const greenPercent = (greenCount * 100) / (redCount + greenCount);
 
   return (
     <div className="app">
       <h1>
-        <div className="votes">ხმების რაოდენობა:{`${voteCount}`}</div>
+        <div className="votes">
+          ხმების რაოდენობა:{loader ? <Loader /> : `${voteCount}`}
+        </div>
         {showWater ? "შენ უკვე მიეცი ხმა" : "რომელი გირჩევნია?"}
       </h1>
       <div className="card-page-wrapper">

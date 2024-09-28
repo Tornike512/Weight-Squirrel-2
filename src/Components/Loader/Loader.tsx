@@ -1,3 +1,5 @@
+import "./Loader.scss";
+
 export function Loader() {
-  return <div></div>;
+  return <span className="loader"></span>;
 }
