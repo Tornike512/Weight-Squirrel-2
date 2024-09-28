@@ -75,7 +75,11 @@ export function CardWaterWrapper() {
           <Card onClick={handleRedCardClick} question="აკონტროლო ორი ციყვი" />
         )}
         {showWater && (
-          <Water percentage={redPercent} question="აკონტროლო ორი ციყვი" />
+          <Water
+            percentage={redPercent}
+            loader={loader}
+            question="აკონტროლო ორი ციყვი"
+          />
         )}
         {!showWater && (
           <Card
@@ -86,6 +90,7 @@ export function CardWaterWrapper() {
         {showWater && (
           <Water
             percentage={greenPercent}
+            loader={loader}
             question="გაიგო ყველაფრის მასა რასაც შეხედავ"
           />
         )}
