@@ -12,7 +12,9 @@ export default function useGetIpAddress() {
 
   async function getIp() {
     try {
-      const response = await axios.get("http://localhost:4500/api/get");
+      const response = await axios.get(
+        "https://squirrel-2-backend.onrender.com/api/get"
+      );
       setIp(response.data);
       setApiLoaded(true);
     } catch (error) {

@@ -16,7 +16,7 @@ export function CardWaterWrapper() {
 
   const { ip, apiLoaded } = useGetIpAddress();
 
-  const socket = io("http://localhost:4500");
+  const socket = io("https://squirrel-2-backend.onrender.com");
 
   const newUser: any = removeDuplicates(ip)[removeDuplicates(ip).length - 1];
 
@@ -33,8 +33,6 @@ export function CardWaterWrapper() {
       setLoader(false);
     });
   }, [ip]);
-
-  console.log(loader);
 
   useEffect(() => {
     socket.on("sendRed", (reds) => {
