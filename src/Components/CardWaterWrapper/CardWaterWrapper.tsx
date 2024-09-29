@@ -14,17 +14,18 @@ export function CardWaterWrapper() {
   const [greenCount, setGreenCount] = useState<number>(0);
   const [loader, setLoader] = useState<boolean>(false);
 
-  const { ip, apiLoaded } = useGetIpAddress();
+  const { ip } = useGetIpAddress();
+  console.log(ip);
 
   const socket = io("https://squirrel-2-backend.onrender.com");
 
   const newUser: any = removeDuplicates(ip)[removeDuplicates(ip).length - 1];
 
   useEffect(() => {
-    if (apiLoaded && removeDuplicates(ip).toString() === newUser) {
+    if (removeDuplicates(ip).includes(newUser)) {
       setShowWater(true);
     }
-  }, [showWater, newUser]);
+  }, [newUser, showWater]);
 
   useEffect(() => {
     setLoader(true);
@@ -44,17 +45,17 @@ export function CardWaterWrapper() {
   }, []);
 
   const handleRedCardClick = () => {
+    useIpAddress();
     setShowWater(true);
     socket.emit("updateRed");
     socket.emit("updateVote");
-    useIpAddress();
   };
 
   const handleGreenCardClick = () => {
+    useIpAddress();
     setShowWater(true);
     socket.emit("updateGreen");
     socket.emit("updateVote");
-    useIpAddress();
   };
 
   const redPercent = (redCount * 100) / (redCount + greenCount);
