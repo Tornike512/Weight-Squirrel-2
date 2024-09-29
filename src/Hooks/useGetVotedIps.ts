@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export const useGetVotedIps = () => {
-  const [votedIps, setVotedIps] = useState<string[]>([]);
+  const [votedIps, setVotedIps] = useState<any[]>([]);
 
   async function getVotedIps() {
     try {
-      const response = await axios.get("http://localhost:4500/api/getVoted");
+      const response = await axios.get(
+        "https://squirrel-2-backend-5.onrender.com/api/getVoted"
+      );
       setVotedIps(response.data);
     } catch (error) {
       console.log("Error loading voted ips", error);

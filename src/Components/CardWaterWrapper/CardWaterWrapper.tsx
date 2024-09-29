@@ -3,7 +3,9 @@ import { Water } from "../Water";
 import { io } from "socket.io-client";
 import { removeDuplicates } from "../../utils/removeDuplicates";
 import useGetIpAddress from "../../Hooks/useGetIpAddress";
+import { useGetVotedIps } from "../../Hooks/useGetVotedIps";
 import { useIpAddress } from "../../Hooks/useIpAddress";
+import { postVotedIps } from "../../Hooks/postVotedIps";
 import Card from "../Card/Card";
 import { Loader } from "../Loader";
 
@@ -15,14 +17,24 @@ export function CardWaterWrapper() {
   const [loader, setLoader] = useState<boolean>(false);
 
   const { ip } = useGetIpAddress();
-  console.log(ip);
+  const { votedIps } = useGetVotedIps();
 
-  const socket = io("https://squirrel-2-backend.onrender.com");
+  const socket = io("https://squirrel-2-backend-5.onrender.com");
 
   const newUser: any = removeDuplicates(ip)[removeDuplicates(ip).length - 1];
+  const votedUsers: any = votedIps.map((votedIp) => {
+    return votedIp.votedIp;
+  });
 
   useEffect(() => {
-    if (removeDuplicates(ip).includes(newUser)) {
+    useIpAddress();
+  }, []);
+
+  useEffect(() => {
+    if (
+      removeDuplicates(ip).includes(newUser) &&
+      votedUsers.includes(newUser)
+    ) {
       setShowWater(true);
     }
   }, [newUser, showWater]);
@@ -45,14 +57,14 @@ export function CardWaterWrapper() {
   }, []);
 
   const handleRedCardClick = () => {
-    useIpAddress();
+    postVotedIps();
     setShowWater(true);
     socket.emit("updateRed");
     socket.emit("updateVote");
   };
 
   const handleGreenCardClick = () => {
-    useIpAddress();
+    postVotedIps();
     setShowWater(true);
     socket.emit("updateGreen");
     socket.emit("updateVote");
