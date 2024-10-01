@@ -8,7 +8,7 @@ export const useGetVotedIps = () => {
   async function getVotedIps() {
     try {
       const response = await axios.get(
-        "https://squirrel-2-backend-5.onrender.com/api/getVoted"
+        "https://squirrel-2-backend-6.onrender.com/api/getVoted"
       );
       setVotedIps(response.data);
     } catch (error) {
